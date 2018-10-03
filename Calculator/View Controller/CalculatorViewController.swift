@@ -37,6 +37,8 @@ class CalculatorViewController: UIViewController {
         setupSecondRowOfButtons()
         setupThirdRowOfButtons()
         setupBottomRowOfButtons()
+        setButtonHeights()
+        setButtonWidths()
         
         
     }
@@ -45,7 +47,7 @@ class CalculatorViewController: UIViewController {
         displayLabel.textAlignment = .right
         displayLabel.font = UIFont.systemFont(ofSize: 50)
         displayLabel.text = "0"
-        displayLabel.backgroundColor = #colorLiteral(red: 0.1294117719, green: 0.2156862766, blue: 0.06666667014, alpha: 1)
+        displayLabel.backgroundColor = #colorLiteral(red: 0.06852049593, green: 0.1143220634, blue: 0.03557806592, alpha: 1)
         displayLabel.textColor = .white
         displayLabel.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(displayLabel)
@@ -104,7 +106,7 @@ class CalculatorViewController: UIViewController {
         multiplyButton.layer.borderWidth = 2
         multiplyButton.layer.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         multiplyButton.backgroundColor = #colorLiteral(red: 1, green: 0.3547734186, blue: 0, alpha: 1)
-        multiplyButton.setTitle("-", for: .normal)
+        multiplyButton.setTitle("x", for: .normal)
         multiplyButton.setTitleColor(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
         multiplyButton.titleLabel?.font = UIFont.systemFont(ofSize: 25)
         multiplyButton.translatesAutoresizingMaskIntoConstraints = false
@@ -132,12 +134,23 @@ class CalculatorViewController: UIViewController {
         enterButton.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(enterButton)
         operationButtonsArray.append(enterButton)
+        
+        let clearButton = UIButton()
+        clearButton.layer.borderWidth = 2
+        clearButton.layer.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        clearButton.backgroundColor = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
+        clearButton.setTitle("C", for: .normal)
+        clearButton.setTitleColor(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
+        clearButton.titleLabel?.font = UIFont.systemFont(ofSize: 25)
+        clearButton.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(clearButton)
+        operationButtonsArray.append(clearButton)
     }
     
     func setupTopRowOfButtons() {
         NSLayoutConstraint.activate([
             numberButtonsArray[7].leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            numberButtonsArray[7].topAnchor.constraint(equalTo: displayLabel.bottomAnchor),
+            numberButtonsArray[7].topAnchor.constraint(equalTo: displayLabel.bottomAnchor, constant: 200),
             numberButtonsArray[8].leadingAnchor.constraint(equalTo: numberButtonsArray[7].trailingAnchor),
             numberButtonsArray[8].topAnchor.constraint(equalTo: numberButtonsArray[7].topAnchor),
             numberButtonsArray[9].leadingAnchor.constraint(equalTo: numberButtonsArray[8].trailingAnchor),
@@ -179,10 +192,31 @@ class CalculatorViewController: UIViewController {
             numberButtonsArray[0].topAnchor.constraint(equalTo: numberButtonsArray[1].bottomAnchor),
             operationButtonsArray[4].leadingAnchor.constraint(equalTo: numberButtonsArray[3].leadingAnchor),
             operationButtonsArray[4].topAnchor.constraint(equalTo: numberButtonsArray[0].topAnchor),
+            operationButtonsArray[5].leadingAnchor.constraint(equalTo: numberButtonsArray[2].leadingAnchor),
+            operationButtonsArray[5].topAnchor.constraint(equalTo: numberButtonsArray[0].topAnchor),
             operationButtonsArray[0].leadingAnchor.constraint(equalTo: operationButtonsArray[4].trailingAnchor),
             operationButtonsArray[0].topAnchor.constraint(equalTo: numberButtonsArray[0].topAnchor)
         ])
     }
+    
+    func setButtonHeights() {
+        let allButtons = numberButtonsArray + operationButtonsArray
+        for button in allButtons {
+            NSLayoutConstraint.activate([
+                button.heightAnchor.constraint(equalToConstant: 100)
+            ])
+        }
+    }
+
+    func setButtonWidths() {
+        var allButtons = numberButtonsArray + operationButtonsArray
+        for button in allButtons {
+            NSLayoutConstraint.activate([
+                button.widthAnchor.constraint(equalToConstant: 100)
+                ])
+        }
+    }
+    
     
 }
 
