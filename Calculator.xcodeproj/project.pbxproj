@@ -12,6 +12,7 @@
 		8779E7D3216409D1007C7141 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8779E7D2216409D1007C7141 /* Assets.xcassets */; };
 		8779E7D6216409D1007C7141 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8779E7D4216409D1007C7141 /* LaunchScreen.storyboard */; };
 		8779E7E021640EF2007C7141 /* CalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8779E7DF21640EF2007C7141 /* CalculatorViewController.swift */; };
+		87D65A9021656801005470C7 /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D65A8F21656801005470C7 /* Stack.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		8779E7D5216409D1007C7141 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8779E7D7216409D1007C7141 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8779E7DF21640EF2007C7141 /* CalculatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorViewController.swift; sourceTree = "<group>"; };
+		87D65A8F21656801005470C7 /* Stack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stack.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +56,7 @@
 		8779E7C7216409CF007C7141 /* Calculator */ = {
 			isa = PBXGroup;
 			children = (
+				87D65A8F21656801005470C7 /* Stack.swift */,
 				8779E7DE21640ED8007C7141 /* View Controller */,
 				8779E7DD21640AE1007C7141 /* Resources */,
 			);
@@ -150,6 +153,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				87D65A9021656801005470C7 /* Stack.swift in Sources */,
 				8779E7C9216409CF007C7141 /* AppDelegate.swift in Sources */,
 				8779E7E021640EF2007C7141 /* CalculatorViewController.swift in Sources */,
 				8779E7D1216409CF007C7141 /* Calculator.xcdatamodeld in Sources */,
