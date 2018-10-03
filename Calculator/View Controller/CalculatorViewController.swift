@@ -74,6 +74,7 @@ class CalculatorViewController: UIViewController {
             button.setTitleColor(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
             button.titleLabel?.font = UIFont.systemFont(ofSize: 50)
             button.translatesAutoresizingMaskIntoConstraints = false
+            button.addTarget(self, action: #selector(addNumberToEntry(button:)), for: .touchUpInside)
             view.addSubview(button)
             numberButtonsArray.append(button)
         }
@@ -90,6 +91,7 @@ class CalculatorViewController: UIViewController {
         addButton.setTitleColor(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
         addButton.titleLabel?.font = UIFont.systemFont(ofSize: 50)
         addButton.translatesAutoresizingMaskIntoConstraints = false
+        addButton.addTarget(self, action: #selector(operationButton), for: .touchUpInside)
         view.addSubview(addButton)
         operationButtonsArray.append(addButton)
         
@@ -101,6 +103,7 @@ class CalculatorViewController: UIViewController {
         subtractButton.setTitleColor(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
         subtractButton.titleLabel?.font = UIFont.systemFont(ofSize: 50)
         subtractButton.translatesAutoresizingMaskIntoConstraints = false
+        subtractButton.addTarget(self, action: #selector(operationButton), for: .touchUpInside)
         view.addSubview(subtractButton)
         operationButtonsArray.append(subtractButton)
         
@@ -112,7 +115,7 @@ class CalculatorViewController: UIViewController {
         multiplyButton.setTitleColor(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
         multiplyButton.titleLabel?.font = UIFont.systemFont(ofSize: 50)
         multiplyButton.translatesAutoresizingMaskIntoConstraints = false
-        // add target action
+        multiplyButton.addTarget(self, action: #selector(operationButton), for: .touchUpInside)
         view.addSubview(multiplyButton)
         operationButtonsArray.append(multiplyButton)
         
@@ -124,7 +127,7 @@ class CalculatorViewController: UIViewController {
         divideButton.setTitleColor(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
         divideButton.titleLabel?.font = UIFont.systemFont(ofSize: 50)
         divideButton.translatesAutoresizingMaskIntoConstraints = false
-        // add target action
+        divideButton.addTarget(self, action: #selector(operationButton), for: .touchUpInside)
         view.addSubview(divideButton)
         operationButtonsArray.append(divideButton)
         
@@ -136,7 +139,7 @@ class CalculatorViewController: UIViewController {
         enterButton.setTitleColor(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
         enterButton.titleLabel?.font = UIFont.systemFont(ofSize: 50)
         enterButton.translatesAutoresizingMaskIntoConstraints = false
-        // add target action
+        enterButton.addTarget(self, action: #selector(enter), for: .touchUpInside)
         view.addSubview(enterButton)
         operationButtonsArray.append(enterButton)
         
@@ -148,7 +151,7 @@ class CalculatorViewController: UIViewController {
         clearButton.setTitleColor(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
         clearButton.titleLabel?.font = UIFont.systemFont(ofSize: 50)
         clearButton.translatesAutoresizingMaskIntoConstraints = false
-        // add target action
+        clearButton.addTarget(self, action: #selector(clear), for: .touchUpInside)
         view.addSubview(clearButton)
         operationButtonsArray.append(clearButton)
     }
@@ -225,7 +228,7 @@ class CalculatorViewController: UIViewController {
     
     // MARK: - Calculator Functionality
     
-    func addNumberToEntry(button: UIButton) {
+    @objc func addNumberToEntry(button: UIButton) {
         
         guard let number = button.currentTitle else { return }
         
@@ -240,16 +243,16 @@ class CalculatorViewController: UIViewController {
         }
     }
     
-    func enter() {
+    @objc func enter() {
         isInMiddleOfTypingANumber = false
         stack.push(number: displayValue)
         // print the stack in the console for troubleshooting
         stack.log()
     }
     
-    func operationButton(button: UIButton) {
+    @objc func operationButton(_ sender: UIButton) {
         
-        guard let operation = button.currentTitle else { return }
+        guard let operation = sender.currentTitle else { return }
         
         if isInMiddleOfTypingANumber {
             enter()
@@ -278,8 +281,9 @@ class CalculatorViewController: UIViewController {
         }
     }
     
-    func clearButton() {
+    @objc func clear() {
         displayValue = 0.0
+        stack.empty()
     }
 }
 

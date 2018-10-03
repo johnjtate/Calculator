@@ -27,4 +27,8 @@ class Stack {
     func count() -> Int {
         return floatStack.count
     }
+    
+    func empty() {
+        floatStack = []
+    }
 }
